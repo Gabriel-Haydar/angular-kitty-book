@@ -1,0 +1,94 @@
+<h4 class="text-center">Register now and show your pet to the world!</h4>
+
+<form class="form mt-4" [formGroup]="newUserForm" (submit)="register()">
+  <div class="form-group mt-3">
+    <input
+      type="email"
+      class="form-control"
+      placeholder="E-mail"
+      formControlName="email"
+    />
+    <!--Error messages-->
+    <ng-container
+      *ngIf="
+        newUserForm.get('email')?.errors?.['required'] &&
+        newUserForm.get('email')?.touched
+      "
+    >
+      <app-message msg="E-mail is obligatory"></app-message>
+    </ng-container>
+    <ng-container
+      *ngIf="
+        newUserForm.get('email')?.errors?.['email'] &&
+        newUserForm.get('email')?.touched
+      "
+    >
+      <app-message msg="E-mail in invalid format"></app-message>
+    </ng-container>
+  </div>
+
+  <div class="form-group mt-3">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Full Name"
+      formControlName="fullName"
+    />
+    <!--Error messages-->
+    <ng-container
+      *ngIf="
+        newUserForm.get('fullName')?.errors &&
+        newUserForm.get('fullName')?.touched
+      "
+    >
+      <app-message msg="Full name incorrect"></app-message>
+    </ng-container>
+  </div>
+
+  <div class="form-group mt-3">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Username"
+      formControlName="userName"
+    />
+    <!--Error messages-->
+    <ng-container
+      *ngIf="
+        newUserForm.get('userName')?.errors?.['isLowerCase'] &&
+        newUserForm.get('userName')?.touched
+      "
+    >
+      <app-message msg="Username must be lower case"></app-message>
+    </ng-container>
+    <ng-container
+      *ngIf="
+        newUserForm.get('userName')?.errors?.['exists'] &&
+        newUserForm.get('userName')?.touched
+      "
+    >
+      <app-message msg="Username already exists"></app-message>
+    </ng-container>
+  </div>
+
+  <div class="form-group mt-3">
+    <input
+      type="password"
+      class="form-control"
+      placeholder="Password"
+      formControlName="password"
+    />
+    <ng-container
+      *ngIf="
+      newUserForm.errors?.['pwdSameAsUser'] &&
+      newUserForm.get('password')?.touched
+    "
+    >
+      <app-message msg="Password must be different from username"></app-message>
+    </ng-container>
+  </div>
+
+  <button class="btn btn-primary btn-block mt-3">Register</button>
+</form>
+
+<p class="mt-4">Already a user? <a [routerLink]="''">Log in!</a></p>
