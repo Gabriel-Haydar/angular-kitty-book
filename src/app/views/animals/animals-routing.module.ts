@@ -1,11 +1,16 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { AnimalsListComponent } from './animals-list/animals-list.component';
+import { AnimalDetailsComponent } from "./animal-details/animal-details.component";
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
+import { AnimalsListComponent } from "./animals-list/animals-list.component";
 
 const routes: Routes = [
   {
-    path: '',
+    path: "",
     component: AnimalsListComponent,
+  },
+  {
+    path: ":animalId",
+    component: AnimalDetailsComponent,
   },
 ];
 

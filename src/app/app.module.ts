@@ -1,22 +1,23 @@
-import { FooterModule } from './components/footer/footer.module';
-import { HeaderModule } from './components/header/header.module';
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { FooterModule } from "./components/footer/footer.module";
+import { HeaderModule } from "./components/header/header.module";
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
 
-import { AppComponent } from './app.component';
+import { AppComponent } from "./app.component";
 
-import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
-import { AnimalDetailsComponent } from './animals/animal-details/animal-details.component';
+import { AppRoutingModule } from "./app-routing.module";
+import { HttpClientModule } from "@angular/common/http";
+import { AuthModule } from "./services/auth.module";
 
 @NgModule({
-  declarations: [AppComponent, AnimalDetailsComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     HeaderModule,
     FooterModule,
+    AuthModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
