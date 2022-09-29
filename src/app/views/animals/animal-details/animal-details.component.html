@@ -17,6 +17,13 @@
           animal.likes
         }}</i>
       </small>
+      <app-comments
+        [id]="animalId"
+        *ngIf="animal.allowComments; else warning"
+      ></app-comments>
+      <ng-template #warning>
+        <p>You could not comment about the animal</p>
+      </ng-template>
     </div>
   </div>
 </div>
