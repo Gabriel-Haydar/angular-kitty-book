@@ -1,0 +1,32 @@
+<header class="sticky-top">
+  <nav class="navbar navbar-light bg-white">
+    <a class="navbar-brand">
+      <i
+        class="fa fa-bars mr-2"
+        (click)="menu.openMenu()"
+        (keyup.space)="menu.openMenu()"
+      ></i>
+      Kitty Book
+    </a>
+
+    <app-menu #menu>
+      <ul class="list-unstyled">
+        <li>
+          <a [routerLink]="['animals', 'new']">New Animal</a>
+        </li>
+      </ul>
+    </app-menu>
+
+    <div *ngIf="user$ | async as user">
+      <i class="fa fa-user-circle mr-1"></i>
+      <a class="mr-1">{{ user.name }}</a>
+      <a (click)="logout()">Logout</a>
+    </div>
+  </nav>
+
+  <ng-template #login>
+    <span class="nav-text">
+      <a [routerLink]="['']">Login</a>
+    </span>
+  </ng-template>
+</header>
